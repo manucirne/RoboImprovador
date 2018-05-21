@@ -1,34 +1,6 @@
 import smach
 import mido
 
-C = 0+48
-CS = C+1
-D =  C+2
-DS = C+3
-E = C+4
-F = C+5
-FS = C+6
-G = C+7
-GS = C+8
-A = C+9
-AS = C+10
-B = C+11
-
-inst = 15
-
-CMscale = [C,D,E,F,G,A,B,C+12] #Am
-DMscale = [D,E,FS,G,A,B,CS+12,D+12] #Bm
-EMscale = [E,FS,GS,A,B,CS+12,DS+12,E+12] #C#m
-FMscale = [F,G,A,AS,C+12,D+12,E+12,F+12] #Dm
-GMscale = [G,A,B,C+12,D+12,E+12,FS+12,G+12] #Em
-AMscale = [A,B,CS+12,D+12,E+12,FS+12,GS+12,A+12] #F#m
-BMscale = [B,CS+12,DS+12,E+12,FS+12,GS+12,AS+12,B+12] #G#m
-
-mid = mido.MidiFile()
-track = mido.MidiTrack()
-mid.tracks.append(track)
-track.append(mido.Message('program_change', program=12, time=0))
-
 class Grau1(smach.State):
 	def __init__(self):
 		smach.State.__init__(self, outcomes=["IrGrau2", "IrGrau3", "IrGrau4", "IrGrau5", "IrGrau6", "IrGrau7"])
@@ -55,6 +27,7 @@ class Grau4(smach.State):
 		smach.State.__init__(self, outcomes=["IrGrau1", "IrGrau2", "IrGrau3", "IrGrau5", "IrGrau6", "IrGrau7"])
 
 	def execute(self, userdata):
+
 		return 
 
 class Grau5(smach.State):
@@ -79,6 +52,7 @@ class Grau7(smach.State):
 		return 
 
 def main():	
+
 	sm = smach.StateMachine(outcomes=[])
 	with sm:
 		smach.StateMachine.add('GRAU1', Grau1(),
