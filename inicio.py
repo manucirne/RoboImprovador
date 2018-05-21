@@ -32,7 +32,7 @@ import random
 # 	return note
 
 
-# #precisa organizar os ifs e conferir as escalas a partir do sexto grau
+ #precisa organizar os ifs e conferir as escalas a partir do sexto grau
 # def scale(chord,tom):
 # 	note = Note(chord)
 # 	if chord == tom:   # primeiro grau I
