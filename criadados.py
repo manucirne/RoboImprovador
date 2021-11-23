@@ -2,20 +2,20 @@ from music21 import *
 from random import randint
 import json
 import os
-
+              
 arquivos = []
 #arquivosabc = []
-
+              
 coreCorpus = corpus.corpora.CoreCorpus()
-
-
+              
+              
 for p in coreCorpus.getPaths():
 	if "xml" in os.path.basename(str(p)):
 		arquivos.append(os.path.basename(str(p)))
 # for p in coreCorpus.getPaths():
 # 	if "abc" in os.path.basename(str(p)):
 # 		arquivosabc.append(os.path.basename(str(p)))
-
+              
 listanotas = []
 listanotasP = []
 listazero = []
@@ -26,7 +26,7 @@ listaquatro = []
 listacinco = []
 listaseis = []
 listasete = []
-
+              
 listoitava = [0,7]
 for file in arquivos:
 	b = corpus.parse(file)
@@ -40,8 +40,8 @@ for file in arquivos:
 # 	for item in b.recurse():
 # 	    if ('notehead' in dir(item)) and ('name' in dir(item)):
 # 	        listanotas.append(item.name)
-
-
+              
+              
 for index in range(len(listanotas)-1):
 	if listanotas[index+1][0] == "C":
 		if listanotas[index][0] == "C":
@@ -100,15 +100,15 @@ for index in range(len(listanotas)-1):
 		elif listanotas[index][0] == "D":
 			listanotasP.append(2)
 		elif listanotas[index][0] == "C":
-			listanotasP.append(3)
+			listanotasP.append(3)              
 		elif listanotas[index][0] == "B":
-			listanotasP.append(4)
+			listanotasP.append(4)              
 		elif listanotas[index][0] == "A":
-			listanotasP.append(5)
+			listanotasP.append(5)              
 		elif listanotas[index][0] == "G":
 			listanotasP.append(6)
 	if listanotas[index+1][0] == "G":
-		if listanotas[index][0] == "G":
+		if listanotas[index][0] == "G":              
 			indexoitava = randint(0,1)			
 			listanotasP.append(listoitava[indexoitava])
 		elif listanotas[index][0] == "F":
@@ -143,12 +143,12 @@ for index in range(len(listanotas)-1):
 		if listanotas[index][0] == "B":
 			indexoitava = randint(0,1)			
 			listanotasP.append(listoitava[indexoitava])
-		elif listanotas[index][0] == "A":
+		elif listanotas[index][0] == "A":              
 			listanotasP.append(1)
 		elif listanotas[index][0] == "G":
 			listanotasP.append(2)
 		elif listanotas[index][0] == "F":
-			listanotasP.append(3)
+			listanotasP.append(3)              
 		elif listanotas[index][0] == "E":
 			listanotasP.append(4)
 		elif listanotas[index][0] == "D":
@@ -172,14 +172,14 @@ tresP = int(tres/len(listanotasP)*1000)
 quatroP = int(quatro/len(listanotasP)*1000)
 cincoP = int(cinco/len(listanotasP)*1000)
 seisP = int(seis/len(listanotasP)*1000)
-seteP = int(sete/len(listanotasP)*1000)
-
-for i in range(zeroP):
+seteP = int(sete/len(listanotasP)*1000)              
+              
+for i in range(zeroP):              
 	listazero.append(0)
 for i in range(umP):
 	listazero.append(1)
 for i in range(doisP):
-	listazero.append(2)
+	listazero.append(2)              
 for i in range(tresP):
 	listazero.append(3)
 for i in range(quatroP):
@@ -221,10 +221,10 @@ for i in range(quatroP):
 for i in range(cincoP):
 	listadois.append(7)
 for i in range(seisP):
-	listadois.append(0)
+	listadois.append(0)              
 for i in range(seteP):
 	listadois.append(1)
-
+              
 for i in range(zeroP):
 	listatres.append(3)
 for i in range(umP):
@@ -257,8 +257,8 @@ for i in range(cincoP):
 for i in range(seisP):
 	listaquatro.append(2)
 for i in range(seteP):
-	listaquatro.append(3)
-
+	listaquatro.append(3)              
+              
 for i in range(zeroP):
 	listacinco.append(5)
 for i in range(umP):
@@ -292,7 +292,7 @@ for i in range(seisP):
 	listaseis.append(4)
 for i in range(seteP):
 	listaseis.append(5)
-
+              
 for i in range(zeroP):
 	listasete.append(7)
 for i in range(umP):
@@ -309,8 +309,8 @@ for i in range(seisP):
 	listasete.append(5)
 for i in range(seteP):
 	listasete.append(6)
-
-
+              
+              
 dados = {"zero" : listazero, "um": listaum, "dois": listadois, "tres": listatres, "quatro": listaquatro, "cinco": listacinco, "seis": listaseis, "sete": listasete}
 with open('dadosprob.json', 'w') as fp:
     json.dump(dados, fp)
